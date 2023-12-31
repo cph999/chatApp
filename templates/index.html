@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='aliyun-webrtc-sdk.js') }}"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <div id="app">
+        <div id="chatList">
+            <div class="self-info">
+                <span id="uid">{{ user["user_id"] }}</span>
+                <span id="username-box">{{ user["username"] }}</span>
+                <img src='{{ user["images"] }}' class="user-icon" alt="头像" id="self-icon-image">
+            </div>
+            <div style="display: none" id="chatsContent">{{ chats }}</div>
+            <div id="chatItemx">
+                <ul id="chatItems"></ul>
+            </div>
+        </div>
+        <div id="chatView">
+            <h1 class="title-top">ChatRoom</h1>
+            <ul id="chatContent">
+{#                <li class="chat-item">#}
+{#                    <img src="static/gpt.jpg" class="icon-head-other" alt="头像"/>#}
+{#                    <div class="chat-content-box-other">请叫我恶魔崇大人，我有什么可以帮您的吗?</div>#}
+{#                </li>#}
+            </ul>
+            <form method="post"  action="#" id="sendMsg">
+                <label for="SendContent"></label><textarea name="msg" id="SendContent" placeholder="请输入..."></textarea>
+                <input type="submit" value="发送">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
